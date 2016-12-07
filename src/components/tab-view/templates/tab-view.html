@@ -1,0 +1,13 @@
+<div class="tab-view">
+    <div class="tab-view-tab-bar">
+        <div class="tab-view-tab" v-for="tab in tabs" v-bind:class="{active: tab == selectedTab}"
+             v-on:click="onTabClick(tab)">
+            <div class="layout">
+                <span class="icon status" v-bind:class="tab.status"></span>
+                <span class="title">{{tab.title}}</span>
+                <span class="icon close-button" v-on:click.stop="onTabCloseButtonClick(tab)"></span>
+            </div>
+        </div>
+    </div>
+    <div class="tab-view-content" v-html="content"></div>
+</div>

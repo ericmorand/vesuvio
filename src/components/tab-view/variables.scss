@@ -1,0 +1,4 @@
+@import "ref";
+@import "../theme/lib/functions";
+
+$tab-view-icon-size: ref-size-to-em($tab-view-ref-icon-size, 0);

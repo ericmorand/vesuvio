@@ -1,0 +1,9 @@
+@import "index";
+@import "../../demo/index";
+@import "../../theme/body/index";
+
+.demo-navigation-component-explorer {
+  @include body;
+
+  height: 50vh;
+}

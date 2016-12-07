@@ -1,0 +1,125 @@
+@import "../theme/icon/index";
+@import "../theme/variables";
+@import "../theme/font/lib/mixins";
+@import "../theme/rtl/index";
+@import "../theme/components/tab-view/_variables.scss";
+@import "../theme/breakpoint/index.scss";
+@import "variables";
+
+$theme--spacing-horizontal: 1.0em;
+$theme--tab-color-background: #aeaeae;
+$theme--text-color-primary: #fff;
+$theme--text-color-highlight: tomato;
+$theme--tab-active-color-background: #ccc;
+
+@mixin t($property, $value) {
+  #{$property}: ref-size-to-em($value, $theme--ref--breakpoint--sm);
+
+  @include breakpoint($theme--breakpoint--md) {
+    #{$property}: ref-size-to-em($value, $theme--ref--breakpoint--md);
+  }
+
+  @include breakpoint($theme--breakpoint--lg) {
+    #{$property}: ref-size-to-em($value, $theme--ref--breakpoint--lg);
+  }
+}
+
+.tab-view {
+  display: flex;
+  flex-direction: column;
+
+  .tab-view-tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tab-view-tab {
+    @include t(height, $theme--tab-view-tab--height);
+    @include rtl-sass-padding(0, ($theme--spacing-horizontal - 0.25em), 0, $theme--spacing-horizontal);
+    @include rtl-sass-border-color(black);
+    @include rtl-sass-border-style(solid);
+    @include rtl-sass-border-width(1px);
+    @include rtl-sass-declaration(border-bottom, none, none);
+
+    color: $theme--text-color-primary;
+    background-color: $theme--tab-view-tab--color--background;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.0em;
+    flex-grow: 1;
+
+    > .layout {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+    }
+
+    .title, .icon-close {
+      display: inline-block;
+    }
+
+    .title {
+      @include primary-font(normal, 600);
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .status, .close-button {
+      font-size: $tab-view-icon-size;
+      width: 1.0em;
+      height: 1.0em;
+    }
+
+    .status {
+      display: none;
+      @include rtl-sass-margin-right($theme--spacing-horizontal);
+
+      &.error, &.warning {
+        display: block;
+      }
+
+      &.error {
+        &:before {
+          content: "error";
+          color: red;
+        }
+      }
+
+      &.warning {
+        &:before {
+          content: "warning";
+          color: orange;
+        }
+      }
+    }
+
+    .close-button {
+      @include rtl-sass-margin-left($theme--spacing-horizontal - 0.25em);
+
+      &:before {
+        content: "close";
+      }
+
+      &:hover {
+        color: $theme--text-color-highlight;
+      }
+    }
+
+    &.active {
+      background-color: $theme--tab-view-tab--active--color--background;
+    }
+  }
+
+  .tab-view-content {
+    border: solid 1px black;
+    flex-grow: 1;
+    height: 0;
+    overflow: auto;
+
+    > * {
+      max-width: 100%;
+    }
+  }
+}

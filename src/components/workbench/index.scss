@@ -1,0 +1,45 @@
+@import "../theme/breakpoint/index";
+@import "../theme/color/index";
+@import "../theme/icon/index";
+@import "../theme/rtl/index";
+
+@import "../navigation/app-bar/index";
+@import "../navigation/component-explorer/index";
+
+.workbench {
+  height: 100%;
+  background-color: $theme--color--background-color--dark;
+  color: $theme--color--text-color--on-dark;
+  position: relative;
+
+  .navigation-component-explorer {
+    box-sizing: border-box;
+    transition: all 0.2s linear; //todo: use theme defined transitions
+    overflow: auto;
+    position: absolute;
+    //top: $appBarHeight; //todo
+    bottom: 0;
+    @include rtl-sass-left(-100%);
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(min-width $theme--breakpoint--md) {
+      position: relative;
+      width: 25%;
+      height: 100%;
+      @include rtl-sass-float(left);
+      @include rtl-sass-left(0);
+    }
+  }
+
+  &.component-explorer-expanded {
+    overflow: hidden;
+
+    .navigation-component-explorer {
+      position: absolute;
+      display: block;
+      @include rtl-sass-left(0);
+      @include rtl-sass-right(0);
+    }
+  }
+}

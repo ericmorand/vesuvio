@@ -1,0 +1,11 @@
+@import "../../theme/breakpoint/index";
+@import "../../theme/color/index";
+@import "../../theme/icon/index";
+@import "../../theme/rtl/index";
+
+.navigation-component-explorer {
+  height: 100%;
+  background-color: $theme--color--background-color--dark;
+  color: $theme--color--text-color--on-dark;
+  background-color: rgba(60, 63, 65, 1.0);
+}

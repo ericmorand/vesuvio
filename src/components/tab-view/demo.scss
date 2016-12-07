@@ -1,0 +1,18 @@
+@import "index";
+@import "../demo/index";
+
+.demo-tab-view {
+  .demo-toolbar {
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .tab-view {
+    .tab-view-content {
+      height: 50vh;
+    }
+  }
+}

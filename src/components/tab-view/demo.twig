@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Tab view demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Tab view" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content demo-tab-view">
+            <button v-on:click="addTab">+</button>
+            <tab-view v-bind:tabs="{{ tabs|json_encode|escape }}" v-bind:selected-tab.sync="selectedTab"></tab-view>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
+

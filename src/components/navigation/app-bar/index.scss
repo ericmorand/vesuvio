@@ -1,0 +1,66 @@
+@import "../../theme/breakpoint/index";
+@import "../../theme/color/index";
+@import "../../theme/icon/index";
+@import "../../theme/rtl/index";
+
+.navigation-app-bar {
+  height: 3.5em;
+  background-color: $theme--color--background-color--dark;
+  color: $theme--color--text-color--on-dark;
+  @include rtl-sass-padding(0, 0.5em); //todo: use consistent padding
+  position: relative;
+
+  &:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+  }
+
+  .burger {
+    height: 2.0em;
+    width: 2.0em;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    background: 0;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+
+    &:before {
+      @include icon-font;
+      content: "menu";
+      font-size: 2.0em;
+
+      @include breakpoint(min-width $theme--breakpoint--lg) {
+        display: none;
+      }
+    }
+  }
+
+  .title-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    @include rtl-sass-margin(0, 3.0em); //todo: compute this
+
+    &:before {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      content: "";
+    }
+  }
+
+  .title {
+    display: inline-block;
+    font-size: 1.25em;
+    vertical-align: middle;
+    //@include rtl-sass-margin(0, 2.0em);
+    width: 100%;
+    text-align: center;
+  }
+}

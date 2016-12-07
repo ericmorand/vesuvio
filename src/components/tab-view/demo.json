@@ -1,0 +1,55 @@
+{
+  "content": "Such an awesome component",
+  "tabs": [
+    {
+      "title": "lorem/ipsum",
+      "status": "success",
+      "content": "<img src='http://placehold.it/1080x1920/FF3456?text=lorem/ipsum'>"
+    },
+    {
+      "title": "lorem/ipsum/dolor",
+      "status": "success",
+      "content": "<img src='//placehold.it/1080x3840/456?text=lorem/ipsum/dolor'>"
+    },
+    {
+      "title": "lorem/ipsum/dolor/sit",
+      "status": "success",
+      "content": "<img src='//placehold.it/1920x1080/123?text=lorem/ipsum/dolor/sit'>"
+    },
+    {
+      "title": "lorem/ipsum/dolor",
+      "status": "error",
+      "content": "<img src='//placehold.it/1920x1080/345?text=lorem/ipsum/dolor'>"
+    },
+    {
+      "title": "lorem/ipsum",
+      "status": "success",
+      "content": "<img src='//placehold.it/1920x1080/123456?text=lorem/ipsum''>"
+    },
+    {
+      "title": "lorem/ipsum/dolor/sit/amet",
+      "status": "success",
+      "content": "<img src='//placehold.it/920x80/666?text=lorem/ipsum/dolor/sit/amet'>"
+    },
+    {
+      "title": "lorem/ipsum",
+      "status": "warning",
+      "content": "<img src='//placehold.it/1920x1080/121212?text=lorem/ipsum'>"
+    },
+    {
+      "title": "lorem/ipsum",
+      "status": "success",
+      "content": "<img src='//placehold.it/1920x1080/ABCDEF?text=lorem/ipsum'>"
+    },
+    {
+      "title": "lorem/ipsum",
+      "status": "success",
+      "content": "<img src='//placehold.it/1920x1080/333?text=lorem/ipsum'>"
+    },
+    {
+      "title": "lorem/ipsum",
+      "status": "error",
+      "content": "<img src='//placehold.it/400x400/?text=lorem/ipsum'>"
+    }
+  ]
+}

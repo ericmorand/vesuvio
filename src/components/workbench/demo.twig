@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Workbench demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Workbench" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content">
+            <div class="demo-workbench">
+                <demo-workbench inline-template>
+                    <workbench v-bind:title="'Lorem ipsum'"></workbench>
+                </demo-workbench>
+            </div>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
