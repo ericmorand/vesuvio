@@ -1,7 +1,8 @@
 @import "../theme/breakpoint/index";
 @import "../theme/color/index";
-@import "../theme/icon/index";
+@import "../icon/index";
 @import "../theme/rtl/index";
+@import "../theme/app-bar/index";
 
 @import "../navigation/app-bar/index";
 @import "../navigation/component-explorer/index";
@@ -12,12 +13,19 @@
   color: $theme--color--text-color--on-dark;
   position: relative;
 
+  .wrapper {
+    position: absolute;
+    top: $theme--app-bar--height;
+    @include rtl-sass-right(0);
+    bottom: 0;
+    @include rtl-sass-left(0);
+  }
+
   .navigation-component-explorer {
     box-sizing: border-box;
     transition: all 0.2s linear; //todo: use theme defined transitions
     overflow: auto;
     position: absolute;
-    //top: $appBarHeight; //todo
     bottom: 0;
     @include rtl-sass-left(-100%);
     width: 100%;

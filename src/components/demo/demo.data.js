@@ -8,11 +8,11 @@ let Language = function (name, code, direction, lorem, loremShort) {
 };
 
 let languages = [
-  new Language('Left-to-right', 'en', 'ltr', {
+  new Language('English', 'en', 'ltr', {
     long: 'Lorem ipsum dolor sit amet, ferri conclusionemque eum et. Ei accusata invenire convenire nam. Ad sit lorem ubique ceteros, probo illum consulatu no duo, nam laudem quaeque ne. Ne ius amet deleniti quaestio.',
     short: 'Lorem ipsum dolor sit amet, ferri conclusionemque eum et'
   }),
-  new Language('Right-to-left', 'ar', 'rtl', {
+  new Language('Arabic', 'ar', 'rtl', {
     long: 'من المسرح والنرويج دون, احداث وتتحمّل والفرنسي كل بلا, حتى ٣٠ بقعة ا الفرنسية. مما ديسمبر العمليات الشّعبين ٣٠, لان في التنازلي استطاعوا. حادثة المتحدة عن وفي. أمام وحرمان دون تم. الغالي الثقيلة ذات ثم, فكانت الدولارات حين أي.',
     short: 'العمليات الشّعبين ٣٠, لان في التنازلي استطاعوا. حادثة المتحدة'
   })

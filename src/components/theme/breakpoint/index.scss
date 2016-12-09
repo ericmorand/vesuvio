@@ -1,2 +1,11 @@
 @import "../../../../node_modules/breakpoint-sass/stylesheets/breakpoint";
-@import "variables";
+
+$theme--breakpoint--sm: 0px;
+$theme--breakpoint--md: 481px;
+$theme--breakpoint--lg: 1025px;
+
+$theme--ref--breakpoints: (
+        $theme--breakpoint--sm,
+        $theme--breakpoint--md,
+        $theme--breakpoint--lg
+);

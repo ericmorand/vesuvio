@@ -1,0 +1,30 @@
+@import "../theme/breakpoint/index";
+@import "../theme/color/index";
+@import "../theme/icon/index";
+@import "../icon/index";
+@import "../theme/rtl/index";
+
+.outline-view {
+  height: 100%;
+  background-color: $theme--color--background-color--dark;
+  color: $theme--color--text-color--on-dark;
+
+  padding: 0;
+  margin: 0;
+
+  .expander {
+    display: inline-block;
+    font-size: 2.0em;
+    @include rtl-sass-declaration(transform, rotate(-90deg), rotate(90deg));
+
+      &:before {
+        @include icon;
+        content: "arrow_drop_down";
+      }
+  }
+
+  li {
+    list-style: none;
+    @include rtl-sass-padding-left(20px);
+  }
+}

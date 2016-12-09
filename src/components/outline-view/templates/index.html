@@ -1,0 +1,8 @@
+<ul class="outline-view" v-bind:class="{'leaf': !root.children, 'expanded': expanded}">
+    <div class="expander"></div>
+    <div class="icon"></div>
+    <div class="title">{{root.title}}</div>
+    <li v-if="expanded" v-for="child in root.children">
+        <outline-view v-bind:root="child"></outline-view>
+    </li>
+</ul>

@@ -1,0 +1,6 @@
+@import "../theme/icon/index";
+@import "lib/mixins";
+
+.icon {
+  @include icon();
+}
