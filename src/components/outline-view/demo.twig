@@ -11,7 +11,9 @@
     <demo title="Outline view" v-bind:directions="{{ directions|json_encode|escape }}">
         <div slot="content" class="demo-content">
             <div class="demo-outline-view">
-                <outline-view v-bind:root="{{ root|json_encode|escape }}"></outline-view>
+                <demo-outline-view inline-template>
+                    <outline-view v-bind:root="{{ root|json_encode|escape }}"></outline-view>
+                </demo-outline-view>
             </div>
         </div>
     </demo>

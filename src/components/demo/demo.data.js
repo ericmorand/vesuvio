@@ -1,4 +1,4 @@
-let Language = function (name, code, direction, lorem, loremShort) {
+var Language = function (name, code, direction, lorem, loremShort) {
   return {
     name: name,
     code: code,
@@ -7,7 +7,7 @@ let Language = function (name, code, direction, lorem, loremShort) {
   }
 };
 
-let languages = [
+var languages = [
   new Language('English', 'en', 'ltr', {
     long: 'Lorem ipsum dolor sit amet, ferri conclusionemque eum et. Ei accusata invenire convenire nam. Ad sit lorem ubique ceteros, probo illum consulatu no duo, nam laudem quaeque ne. Ne ius amet deleniti quaestio.',
     short: 'Lorem ipsum dolor sit amet, ferri conclusionemque eum et'
@@ -18,14 +18,14 @@ let languages = [
   })
 ];
 
-let Direction = function (name, direction) {
+var Direction = function (name, direction) {
   return {
     name: name,
     code: direction
   }
 };
 
-let directions = [
+var directions = [
   new Direction('Left-to-right', 'ltr'),
   new Direction('Right-to-left', 'rtl')
 ];

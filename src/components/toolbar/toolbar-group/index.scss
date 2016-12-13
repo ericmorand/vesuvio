@@ -1,0 +1,41 @@
+@import "../../theme/breakpoint/index";
+@import "../../theme/color/index";
+@import "../../theme/font/index";
+@import "../../icon/index";
+@import "../../theme/rtl/index";
+//@import "../../theme/toolbar/index";
+@import "../../theme/lib/mixins";
+@import "../toolbar-button/index";
+
+.toolbar-group {
+  @include vertical-centerer;
+  height: 100%;
+  @include rtl-sass-float(left);
+  font-family: NoSpace, sans-serif;
+
+  .title, .buttons {
+    display: inline-block;
+  }
+
+  //&.title {
+  //  display: none;
+  //
+  //  @include breakpoint(min-width $theme--breakpoint--md) {
+  //    display: initial;
+  //    @include rtl-sass-float(right);
+  //    @include rtl-sass-padding-right(0.5em);
+  //  }
+  //
+  //  > span {
+  //    vertical-align: middle;
+  //  }
+  //}
+  //
+  //&.devices {
+  //  display: none;
+  //  @include breakpoint(min-width $theme--breakpoint--md) {
+  //    display: initial;
+  //    @include rtl-sass-float(right);
+  //  }
+  //}
+}

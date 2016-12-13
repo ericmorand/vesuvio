@@ -1,14 +1,9 @@
 require('.');
 require('../../demo');
 
-let Vue = require('vue');
+const Vue = require('vue');
 
-let demo = Vue.component('demo-navigation-component-explorer', {
-  created: function () {
-    this.$on('app-bar:menu-button-click', function(e) {
-      console.log(e);
-    });
-  }
+Vue.component('demo-navigation-component-explorer', {
 });
 
 new Vue({

@@ -1,3 +1,9 @@
-@mixin icon() {
-  font-family: 'Icon', sans-serif;
-};
+@import "../../theme/icon/variables";
+
+@mixin icon($name) {
+  &:before {
+    font-family: 'Icon', sans-serif;
+    content: "\"\\" + map_get($theme--icon--icons, $name) + "\"";
+    display: block;
+  }
+}

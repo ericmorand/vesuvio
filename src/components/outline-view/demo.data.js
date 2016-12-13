@@ -14,15 +14,93 @@ data.root = {
   children: [
     {
       title: 'Dolor sit amet',
+      icon: 'folder',
       children: [
         {
-          title: 'Ferri conclusionemque eum et'
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder'
         },
         {
-          title: 'Ferri conclusionemque eum et'
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder'
         },
         {
-          title: 'Ferri conclusionemque eum et'
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder',
+          children: [
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder'
+            },
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder'
+            },
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder',
+              children: [
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                },
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                },
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Dolor sit amet',
+      icon: 'folder',
+      children: [
+        {
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder'
+        },
+        {
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder'
+        },
+        {
+          title: 'Ferri conclusionemque eum et',
+          icon: 'folder',
+          children: [
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder'
+            },
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder'
+            },
+            {
+              title: 'Ferri conclusionemque eum et',
+              icon: 'folder',
+              children: [
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                },
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                },
+                {
+                  title: 'Ferri conclusionemque eum et',
+                  icon: 'folder'
+                }
+              ]
+            }
+          ]
         }
       ]
     }

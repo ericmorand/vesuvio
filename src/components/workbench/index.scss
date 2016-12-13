@@ -3,9 +3,11 @@
 @import "../icon/index";
 @import "../theme/rtl/index";
 @import "../theme/app-bar/index";
-
+@import "../prettyprint/index";
 @import "../navigation/app-bar/index";
 @import "../navigation/component-explorer/index";
+@import "../resource-viewer/index";
+@import "../component-viewer/index";
 
 .workbench {
   height: 100%;
@@ -19,6 +21,12 @@
     @include rtl-sass-right(0);
     bottom: 0;
     @include rtl-sass-left(0);
+    border-top: solid 1px rgba(85, 85, 85, 1.0);
+  }
+
+  .navigation-app-bar {
+    border-bottom: solid 1px rgba(40, 40, 40, 1.0);
+    box-sizing: border-box;
   }
 
   .navigation-component-explorer {
@@ -30,6 +38,8 @@
     @include rtl-sass-left(-100%);
     width: 100%;
     z-index: 1;
+
+    @include rtl-sass-border-right(solid 1px rgba(40, 40, 40, 1.0));
 
     @include breakpoint(min-width $theme--breakpoint--md) {
       position: relative;
@@ -48,6 +58,17 @@
       display: block;
       @include rtl-sass-left(0);
       @include rtl-sass-right(0);
+    }
+  }
+
+  .resource-viewer, .component-viewer {
+    @include breakpoint(min-width $theme--breakpoint--md) {
+      position: relative;
+      width: 75%;
+      height: 100%;
+      @include rtl-sass-float(right);
+      @include rtl-sass-right(0);
+      box-sizing: border-box;
     }
   }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Toolbar Group demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Toolbar Group" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content">
+            <div class="demo-toolbar-group">
+                {% for group in groups %}
+                    <demo-toolbar-group inline-template>
+                        <toolbar-group :buttons="{{ group.buttons|json_encode|escape }}"
+                                       title="{{ group.title }}"></toolbar-group>
+                    </demo-toolbar-group>
+                {% endfor %}
+            </div>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

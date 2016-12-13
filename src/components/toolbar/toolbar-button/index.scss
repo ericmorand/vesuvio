@@ -1,0 +1,28 @@
+@import "../../theme/breakpoint/index";
+@import "../../theme/color/index";
+@import "../../icon/index";
+@import "../../theme/rtl/index";
+@import "../../theme/lib/mixins";
+
+.toolbar-button {
+  border: none;
+  background: none;
+  color: $theme--color--text-color--on-dark;
+  @include rtl-sass-padding(0, 0.5em);
+  vertical-align: middle;
+  height: 100%;
+  outline: none;
+  font-size: 1.0em;
+
+  &:before {
+    font-size: 1.75em;
+  }
+
+  &:focus {
+    color: white; // todo: use theme variable please
+  }
+
+  &.active {
+    background-color: $theme--color--background-color--lighter;
+  }
+}

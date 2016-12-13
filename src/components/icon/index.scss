@@ -1,6 +1,10 @@
 @import "../theme/icon/index";
 @import "lib/mixins";
 
-.icon {
-  @include icon();
+@each $name, $value in $theme--icon--icons {
+  .icon {
+    &.#{$name} {
+      @include icon($name);
+    }
+  }
 }

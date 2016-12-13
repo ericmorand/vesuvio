@@ -1,5 +1,17 @@
 <div class="navigation-component-explorer">
-    <component-explorer-item v-for="item in items">
-
-    </component-explorer-item>
+    <div class="toolbar">
+        <div class="group">
+            <button class="icon open-in-own" v-on:click="onOpenInOwnWindowButtonClick"></button>
+        </div>
+        <div class="group devices">
+            <button v-for="device in devices" class="icon"
+                    v-bind:title="device.title"
+                    v-bind:class="getDeviceClass(device)"
+                    v-on:click="onDeviceButtonClick(device)"></button>
+        </div>
+        <div class="group title">
+            <span>{{ title }}</span>
+        </div>
+    </div>
+    <outline-view v-if="root" v-bind:root="root" v-bind:delegate="outlineViewDelegate"></outline-view>
 </div>

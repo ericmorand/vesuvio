@@ -1,6 +1,8 @@
 <div class="workbench" v-bind:class="{'component-explorer-expanded': componentExplorerExpanded}">
     <app-bar v-bind:title="'test'"></app-bar>
     <div class="wrapper">
-        <component-explorer></component-explorer>
+        <component-explorer v-bind:components="components"></component-explorer>
+        <component-viewer v-if="resource && resource.url" v-bind:component="resource" v-bind:devices="devices"></component-viewer>
+        <resource-viewer v-if="resource && resource.data" v-bind:resource="resource"></resource-viewer>
     </div>
 </div>

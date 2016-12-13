@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Toolbar Button demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Toolbar Button" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content">
+            <demo-toolbar-button inline-template>
+                <div class="demo-toolbar-button">
+                    {% for button in buttons %}
+                        <toolbar-button name="{{ button.name }}" title="{{ button.title }}" icon="{{ button.icon }}"
+                                        label="{{ button.label }}" :active="{{ button.active }}"></toolbar-button>
+                    {% endfor %}
+                </div>
+            </demo-toolbar-button>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

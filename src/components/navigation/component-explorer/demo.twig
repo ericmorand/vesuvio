@@ -12,7 +12,7 @@
         <div slot="content" class="demo-content">
             <div class="demo-navigation-component-explorer">
                 <demo-navigation-component-explorer inline-template>
-                    <component-explorer v-bind:title="'Lorem ipsum'"></component-explorer>
+                    <component-explorer v-bind:components="{{ components|json_encode|escape }}" v-bind:title="'Lorem ipsum'"></component-explorer>
                 </demo-navigation-component-explorer>
             </div>
         </div>

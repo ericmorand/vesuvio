@@ -6,7 +6,7 @@
 
 .navigation-app-bar {
   height: $theme--app-bar--height;
-  background-color: $theme--color--background-color--dark;
+  background-color: $theme--color--background-color--light;
   color: $theme--color--text-color--on-dark;
   @include rtl-sass-padding(0, 0.5em); //todo: use consistent padding
   position: relative;
@@ -28,10 +28,9 @@
     color: inherit;
     font-size: inherit;
     padding: 0;
+    @include icon(menu);
 
     &:before {
-      @include icon-font;
-      content: "menu";
       font-size: 2.0em;
 
       @include breakpoint(min-width $theme--breakpoint--lg) {

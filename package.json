@@ -14,6 +14,7 @@
     "material-design-icons": "^3.0.1",
     "merge": "^1.2.0",
     "minifyify": "^7.3.4",
+    "path": "^0.12.7",
     "postcss": "^5.2.6",
     "postcss-copy": "^6.1.0",
     "rtl-sass": "^1.1.0",

@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = {
   componentManifest: 'component.json',
   plugins: {
@@ -12,6 +14,7 @@ module.exports = {
           }],
           ['aliasify', {
             aliases: {
+              'path': 'path/path',
               'vue': 'vue/dist/vue'
             }
           }]
@@ -24,7 +27,13 @@ module.exports = {
     sass: {
       module: require('stromboli-plugin-sass'),
       config: {
-        precision: 8
+        precision: 8,
+        functions: {
+          'codepoints-to-map($codepoints)': function(codepoints) {
+            console.log(codepoints.value);
+
+          }
+        }
       }
     }
   }

@@ -1,0 +1,77 @@
+@import "../theme/breakpoint/index";
+@import "../theme/color/index";
+@import "../theme/lib/mixins";
+@import "../icon/lib/mixins";
+@import "../theme/rtl/index";
+@import "../prettyprint/index";
+@import "../icon/index";
+
+$toolbar-height: 3.0em;
+
+.resource-viewer {
+  background-color: $theme--color--background-color--dark;
+  color: $theme--color--text-color--on-dark;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+
+  .data {
+    padding: 1.0em;
+
+    pre {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .url {
+    height: 100%;
+    width: 100%;
+
+    .preview {
+      position: absolute;
+      top: $toolbar-height;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    iframe {
+      border: none;
+      margin: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .toolbar {
+      height: $toolbar-height;
+      @include rtl-sass-padding(0, 0.5em);
+
+      .group {
+        @include vertical-centerer;
+        height: 100%;
+        @include rtl-sass-float(left);
+
+        &.devices {
+          @include rtl-sass-float(right);
+        }
+      }
+
+      button {
+        border: none;
+        background: none;
+        color: $theme--color--text-color--on-dark;
+        padding: 0;
+        vertical-align: middle;
+        height: 2.0em;
+        font-size: 1.75em;
+      }
+    }
+  }
+
+  .prettyprint {
+    border: none;
+    background-color: transparent;
+  }
+}

@@ -100,3 +100,9 @@ $fontWeights: (
     }
   }
 }
+
+// no space
+@font-face {
+  font-family: 'NoSpace';
+  src: url("assets/NoSpace/zerowidthspaces.ttf") format("truetype");
+}
