@@ -1,0 +1,7 @@
+@import "index";
+@import "../demo/index";
+@import "../body/index";
+
+.demo-search-input {
+  @include body;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Search Input demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Search input" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content">
+            <div class="demo-search-input">
+                <demo-search-input inline-template>
+                    <search-input></search-input>
+                </demo-search-input>
+            </div>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
