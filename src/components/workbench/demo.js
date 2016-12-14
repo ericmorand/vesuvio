@@ -1,6 +1,5 @@
 require('.');
 require('../demo');
-require('../responsive.html');
 
 var Vue = require('vue');
 
