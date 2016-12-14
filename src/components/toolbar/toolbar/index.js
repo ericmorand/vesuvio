@@ -1,3 +1,5 @@
+require('../toolbar-group');
+
 const Vue = require('vue');
 
 module.exports = Vue.component('toolbar', {

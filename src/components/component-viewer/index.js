@@ -4,12 +4,6 @@ require('../toolbar/toolbar-group');
 const Vue = require('vue');
 const path = require('path');
 
-var defaultDevice = {
-  title: 'Full width',
-  name: 'fullscreen',
-  width: '100%'
-};
-
 module.exports = Vue.component('component-viewer', {
   template: require('./templates/index.html'),
   props: {
@@ -17,12 +11,18 @@ module.exports = Vue.component('component-viewer', {
     devices: {
       type: Array,
       default: []
-    }
+    },
+    device: null,
+    directions: {
+      type: Array,
+      default: []
+    },
+    direction: null
   },
   data: function () {
     return {
-      currentDevice: defaultDevice,
-      currentDirection: 'ltr'
+      currentDevice: null,
+      currentDirection: null
     }
   },
   computed: {
@@ -31,11 +31,40 @@ module.exports = Vue.component('component-viewer', {
     }
   },
   created: function() {
-    if (this.devices.indexOf(defaultDevice) < 0) {
-      this.devices.unshift(defaultDevice);
+    if (this.currentDevice == null) {
+      if (this.device) {
+        this.currentDevice = this.device;
+      }
+      else {
+        this.currentDevice = this.devices[0];
+      }
+    }
+
+    if (this.currentDirection == null) {
+      if (this.direction) {
+        this.currentDirection = this.direction;
+      }
+      else {
+        this.currentDirection = this.directions[0];
+      }
     }
   },
   methods: {
+    onIframeLoad: function(e) {
+      this.refreshIFrame();
+    },
+    refreshIFrame: function() {
+      var iframe = this.getIframe();
+      var html = iframe.contentWindow.document.documentElement;
+
+      html.setAttribute('dir', this.currentDirection.name);
+    },
+    getIframe: function() {
+      var preview = this.$el.getElementsByClassName('preview')[0];
+      var iframe = preview.getElementsByTagName('iframe')[0];
+
+      return iframe;
+    },
     onOpenInOwnWindowButtonClick: function (e) {
       window.open(this.component.url);
     },
@@ -47,13 +76,13 @@ module.exports = Vue.component('component-viewer', {
     }
   },
   watch: {
+    currentDevice: function(val) {
+      this.$parent.$emit('component-viewer:device-did-change', this.currentDevice);
+    },
     currentDirection: function(val) {
-      var preview = this.$el.getElementsByClassName('preview')[0];
-      var iframe = preview.getElementsByTagName('iframe')[0];
+      this.$parent.$emit('component-viewer:direction-did-change', this.currentDirection);
 
-      var html = iframe.contentWindow.document.documentElement;
-
-      html.setAttribute('dir', this.currentDirection);
+      this.refreshIFrame();
     }
   }
 });

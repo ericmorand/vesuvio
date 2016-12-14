@@ -12,8 +12,8 @@
         <div slot="content" class="demo-content">
             <div class="demo-workbench">
                 <demo-workbench inline-template>
-                    <workbench v-bind:title="'Lorem ipsum'" v-bind:components="{{ components|json_encode|escape }}"
-                               v-bind:devices="{{ devices|json_encode|escape }}"></workbench>
+                    <workbench :title="'Lorem ipsum'" :components="{{ components|json_encode|escape }}"
+                               :devices="{{ devices|json_encode|escape }}"></workbench>
                 </demo-workbench>
             </div>
         </div>

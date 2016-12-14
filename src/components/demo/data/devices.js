@@ -1,5 +1,10 @@
 module.exports = [
   {
+    title: 'Full width',
+    name: 'fullscreen',
+    width: '100%'
+  },
+  {
     title: 'Desktop',
     name: 'desktop',
     width: '1920px'

@@ -17,24 +17,28 @@ data.root = {
       icon: 'folder',
       children: [
         {
-          title: 'Ferri conclusionemque eum et',
-          icon: 'folder'
+          title: 'Ferri',
+          icon: 'folder',
+          children: []
         },
         {
-          title: 'Ferri conclusionemque eum et',
-          icon: 'folder'
+          title: 'Ferri',
+          icon: 'folder',
+          children: []
         },
         {
-          title: 'Ferri conclusionemque eum et',
+          title: 'Ferri',
           icon: 'folder',
           children: [
             {
               title: 'Ferri conclusionemque eum et',
-              icon: 'folder'
+              icon: 'folder',
+              children: []
             },
             {
               title: 'Ferri conclusionemque eum et',
-              icon: 'folder'
+              icon: 'folder',
+              children: []
             },
             {
               title: 'Ferri conclusionemque eum et',
@@ -42,15 +46,18 @@ data.root = {
               children: [
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 },
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 },
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 }
               ]
             }
@@ -64,11 +71,13 @@ data.root = {
       children: [
         {
           title: 'Ferri conclusionemque eum et',
-          icon: 'folder'
+          icon: 'folder',
+          children: []
         },
         {
           title: 'Ferri conclusionemque eum et',
-          icon: 'folder'
+          icon: 'folder',
+          children: []
         },
         {
           title: 'Ferri conclusionemque eum et',
@@ -76,11 +85,13 @@ data.root = {
           children: [
             {
               title: 'Ferri conclusionemque eum et',
-              icon: 'folder'
+              icon: 'folder',
+              children: []
             },
             {
               title: 'Ferri conclusionemque eum et',
-              icon: 'folder'
+              icon: 'folder',
+              children: []
             },
             {
               title: 'Ferri conclusionemque eum et',
@@ -88,15 +99,18 @@ data.root = {
               children: [
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 },
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 },
                 {
                   title: 'Ferri conclusionemque eum et',
-                  icon: 'folder'
+                  icon: 'folder',
+                  children: []
                 }
               ]
             }

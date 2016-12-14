@@ -17,6 +17,7 @@
   height: 100%;
   background-color: $theme--color--background-color--dark;
   color: $theme--color--text-color--on-dark;
+  position: relative;
 
   .outline-view-wrapper {
     min-width: 100%;
@@ -31,8 +32,6 @@
   }
 
   .outline-view {
-    width: 100%;
-
     .outline-view-item {
       &.component {
         @include outlineViewItemIcon('polymer');

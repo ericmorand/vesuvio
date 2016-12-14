@@ -10,6 +10,7 @@
   background-color: $theme--color--background-color--light;
   color: $theme--color--text-color--on-dark;
   display: inline-block;
+  min-width: 100%;
 
   &:after {
     content: "";

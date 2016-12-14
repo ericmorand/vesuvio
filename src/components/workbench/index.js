@@ -16,13 +16,28 @@ module.exports = Vue.component('workbench', {
     devices: {
       type: Array,
       default: []
+    },
+    directions: {
+      type: Array,
+      default: [
+        {
+          name: 'ltr',
+          title: 'Left-to-rigth'
+        },
+        {
+          name: 'rtl',
+          title: 'Right-to-left'
+        }
+      ]
     }
   },
-  data: function() {
+  data: function () {
     return {
       componentExplorerExpanded: false,
       component: null,
-      resource: null
+      resource: null,
+      device: null,
+      direction: null
     }
   },
   created: function () {
@@ -32,6 +47,14 @@ module.exports = Vue.component('workbench', {
 
     this.$on('component-explorer:selection-did-change', function (item) {
       this.resource = item;
+    });
+
+    this.$on('component-viewer:device-did-change', function (device) {
+      this.device = device;
+    });
+
+    this.$on('component-viewer:direction-did-change', function (direction) {
+      this.direction = direction;
     });
   }
 });

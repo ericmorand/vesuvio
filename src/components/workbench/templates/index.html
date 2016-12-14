@@ -2,7 +2,8 @@
     <app-bar v-bind:title="'test'"></app-bar>
     <div class="wrapper">
         <component-explorer v-bind:components="components"></component-explorer>
-        <component-viewer v-if="resource && resource.url" v-bind:component="resource" v-bind:devices="devices"></component-viewer>
-        <resource-viewer v-if="resource && resource.data" v-bind:resource="resource"></resource-viewer>
+        <component-viewer v-if="resource && resource.url" :component="resource" :devices="devices" :device="device"
+                          :directions="directions" :direction="direction"></component-viewer>
+        <resource-viewer v-if="resource && resource.data" :resource="resource"></resource-viewer>
     </div>
 </div>

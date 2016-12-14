@@ -6,11 +6,10 @@
             </toolbar-button>
         </toolbar-group>
         <toolbar-group class="directions" ref="directionsToolbarGroup" title="Direction">
-            <toolbar-button :active="currentDirection == 'ltr'">
-                <button title="Left-to-right" v-on:click="onDirectionButtonClick('ltr')">ltr</button>
-            </toolbar-button>
-            <toolbar-button :active="currentDirection == 'rtl'">
-                <button title="Right-to-left" v-on:click="onDirectionButtonClick('rtl')">rtl</button>
+            <toolbar-button v-for="direction in directions" :active="direction == currentDirection">
+                <button class="icon" v-bind:title="direction.title" v-bind:class="direction.name"
+                        v-on:click="onDirectionButtonClick(direction)">{{direction.name}}
+                </button>
             </toolbar-button>
         </toolbar-group>
         <toolbar-group class="devices" ref="devicesToolbarGroup" :title="title">
@@ -21,6 +20,7 @@
         </toolbar-group>
     </toolbar>
     <div class="preview">
-        <iframe v-bind:src="component.url" v-bind:style="{width: currentDevice.width}"></iframe>
+        <iframe v-on:load="onIframeLoad" v-bind:src="component.url"
+                v-bind:style="{width: currentDevice.width}"></iframe>
     </div>
 </div>
