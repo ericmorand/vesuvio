@@ -1,7 +1,6 @@
 <div class="toolbar-group">
     <div class="title" v-if="title">{{title}}</div>
     <div class="buttons">
-        <toolbar-button v-for="button in buttons" :name="button.name" :data="button.data" :title="button.title"
-                        :label="button.label" :icon="button.icon" :active="button.active"></toolbar-button>
+        <slot></slot>
     </div>
 </div>

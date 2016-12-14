@@ -1,9 +1,10 @@
 require('.');
 require('../demo');
+require('../responsive.html');
 
-let Vue = require('vue');
+var Vue = require('vue');
 
-let demo = Vue.component('demo-workbench', {
+var demo = Vue.component('demo-workbench', {
   created: function () {
     this.$on('app-bar:menu-button-click', function(e) {
       console.log(e);

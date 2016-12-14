@@ -5,21 +5,24 @@
 @import "../../theme/lib/mixins";
 
 .toolbar-button {
-  border: none;
-  background: none;
-  color: $theme--color--text-color--on-dark;
-  @include rtl-sass-padding(0, 0.5em);
-  vertical-align: middle;
   height: 100%;
-  outline: none;
-  font-size: 1.0em;
 
-  &:before {
-    font-size: 1.75em;
-  }
+  > button {
+    border: none;
+    background: none;
+    color: $theme--color--text-color--on-dark;
+    @include rtl-sass-padding(0, 0.5em);
+    height: 100%;
+    outline: none;
+    font-size: 1.0em;
 
-  &:focus {
-    color: white; // todo: use theme variable please
+    &:before {
+      font-size: 1.75em;
+    }
+
+    &:focus {
+      color: white; // todo: use theme variable please
+    }
   }
 
   &.active {

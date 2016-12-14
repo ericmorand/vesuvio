@@ -13,8 +13,9 @@
             <demo-toolbar-button inline-template>
                 <div class="demo-toolbar-button">
                     {% for button in buttons %}
-                        <toolbar-button name="{{ button.name }}" title="{{ button.title }}" icon="{{ button.icon }}"
-                                        label="{{ button.label }}" :active="{{ button.active }}"></toolbar-button>
+                        <toolbar-button :active="{{ button.active }}">
+                            <button class="icon {{ button.icon }}" title="{{ button.title }}">{{ button.label }}</button>
+                        </toolbar-button>
                     {% endfor %}
                 </div>
             </demo-toolbar-button>

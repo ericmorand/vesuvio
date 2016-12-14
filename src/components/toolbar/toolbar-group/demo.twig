@@ -13,8 +13,13 @@
             <div class="demo-toolbar-group">
                 {% for group in groups %}
                     <demo-toolbar-group inline-template>
-                        <toolbar-group :buttons="{{ group.buttons|json_encode|escape }}"
-                                       title="{{ group.title }}"></toolbar-group>
+                        <toolbar-group>
+                            {% for button in group.buttons %}
+                                <toolbar-button>
+                                    <button title="{{ button.title }}" class="icon {{ button.icon }}">{{ button.label }}</button>
+                                </toolbar-button>
+                            {% endfor %}
+                        </toolbar-group>
                     </demo-toolbar-group>
                 {% endfor %}
             </div>

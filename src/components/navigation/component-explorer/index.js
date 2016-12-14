@@ -1,6 +1,7 @@
 const Vue = require('vue');
 const path = require('path');
 
+require('../../toolbar/toolbar');
 require('../../outline-view');
 
 var outlineViewDelegate = function () {

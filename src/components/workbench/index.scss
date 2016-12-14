@@ -32,7 +32,6 @@
   .navigation-component-explorer {
     box-sizing: border-box;
     transition: all 0.2s linear; //todo: use theme defined transitions
-    overflow: auto;
     position: absolute;
     bottom: 0;
     @include rtl-sass-left(-100%);

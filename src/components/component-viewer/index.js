@@ -1,3 +1,6 @@
+require('../toolbar/toolbar');
+require('../toolbar/toolbar-group');
+
 const Vue = require('vue');
 const path = require('path');
 
@@ -32,17 +35,6 @@ module.exports = Vue.component('component-viewer', {
     }
   },
   methods: {
-    getDeviceClass: function(device) {
-      var classes = [
-        device.name
-      ];
-
-      if (device == this.currentDevice) {
-        classes.push('active');
-      }
-
-      return classes;
-    },
     onOpenInOwnWindowButtonClick: function (e) {
       window.open(this.component.url);
     },

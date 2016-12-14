@@ -1,10 +1,8 @@
-@import "../../theme/breakpoint/index";
 @import "../../theme/color/index";
 @import "../../theme/font/index";
-@import "../../icon/index";
 @import "../../theme/rtl/index";
-//@import "../../theme/toolbar/index";
 @import "../../theme/lib/mixins";
+@import "../../font/lib/mixins";
 @import "../toolbar-button/index";
 
 .toolbar-group {
@@ -13,29 +11,18 @@
   @include rtl-sass-float(left);
   font-family: NoSpace, sans-serif;
 
-  .title, .buttons {
+  .title, .buttons, .toolbar-button {
+    @include primary-font();
+    vertical-align: middle;
     display: inline-block;
   }
 
-  //&.title {
-  //  display: none;
-  //
-  //  @include breakpoint(min-width $theme--breakpoint--md) {
-  //    display: initial;
-  //    @include rtl-sass-float(right);
-  //    @include rtl-sass-padding-right(0.5em);
-  //  }
-  //
-  //  > span {
-  //    vertical-align: middle;
-  //  }
-  //}
-  //
-  //&.devices {
-  //  display: none;
-  //  @include breakpoint(min-width $theme--breakpoint--md) {
-  //    display: initial;
-  //    @include rtl-sass-float(right);
-  //  }
-  //}
+  .buttons, .toolbar-button {
+    height: 100%;
+  }
+
+  .title {
+    font-weight: 700;
+    @include rtl-sass-padding-right(0.5em);
+  }
 }

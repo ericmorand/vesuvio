@@ -4,37 +4,10 @@
 @import "../../theme/rtl/index";
 @import "../../theme/toolbar/index";
 @import "../../theme/lib/mixins";
+@import "../toolbar-group/index";
 
 .toolbar {
   height: $theme--toolbar--height;
   position: relative;
   border-bottom: solid 1px rgba(40, 40, 40, 1.0);
-
-  .group {
-    @include vertical-centerer;
-    height: 100%;
-    @include rtl-sass-float(left);
-
-    &.title {
-      display: none;
-
-      @include breakpoint(min-width $theme--breakpoint--md) {
-        display: initial;
-        @include rtl-sass-float(right);
-        @include rtl-sass-padding-right(0.5em);
-      }
-
-      > span {
-        vertical-align: middle;
-      }
-    }
-
-    &.devices {
-      display: none;
-      @include breakpoint(min-width $theme--breakpoint--md) {
-        display: initial;
-        @include rtl-sass-float(right);
-      }
-    }
-  }
 }

@@ -1,19 +1,18 @@
 <div class="component-viewer">
-    <div class="toolbar">
-        <div class="group">
-            <button class="icon open-in-own" v-on:click="onOpenInOwnWindowButtonClick"></button>
-        </div>
-        <div class="group devices">
-            <button v-for="device in devices" class="icon"
-                    v-bind:title="device.title"
-                    v-bind:class="getDeviceClass(device)"
-                    v-on:click="onDeviceButtonClick(device)"></button>
-        </div>
-        <div class="group title">
-            <span>{{ title }}</span>
-        </div>
-    </div>
+    <toolbar>
+        <toolbar-group class="actions">
+            <toolbar-button>
+                <button class="icon open-in-own" v-on:click="onOpenInOwnWindowButtonClick"></button>
+            </toolbar-button>
+        </toolbar-group>
+        <toolbar-group class="devices" ref="devicesToolbarGroup" :title="title">
+            <toolbar-button v-for="device in devices" :active="device == currentDevice">
+                <button class="icon" v-bind:title="device.title"
+                        v-bind:class="device.name" v-on:click="onDeviceButtonClick(device)"></button>
+            </toolbar-button>
+        </toolbar-group>
+    </toolbar>
     <div class="preview">
-        <iframe v-bind:src="component.url" v-bind:style="{width: currentDevice.width}"></iframe>
+        <iframe dir="rtl" v-bind:src="component.url" v-bind:style="{width: currentDevice.width}"></iframe>
     </div>
 </div>

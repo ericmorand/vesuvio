@@ -68,7 +68,7 @@ var twigBinary = fs.readFileSync(twigBinaryPath).toString();
 var components = [];
 
 components.push(
-  new Component('lorem/ipsum', 'http://mido.ch', [
+  new Component('lorem/ipsum', '/navigation/app-bar', [
     new RenderResult('js', [
       {
         path: 'index.js',

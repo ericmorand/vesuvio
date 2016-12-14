@@ -1,4 +1,6 @@
 <div class="outline-view">
-    <outline-view-item v-for="child in root.children" v-bind:item="child"
-                       v-bind:level="0" v-bind:selection="selection" v-bind:delegate="delegate"></outline-view-item>
+    <div class="items">
+        <outline-view-item v-for="child in root.children" v-bind:item="child"
+                           v-bind:level="0" v-bind:selection="selection" v-bind:delegate="delegate"></outline-view-item>
+    </div>
 </div>
