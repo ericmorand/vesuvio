@@ -23,6 +23,6 @@
 
   .title {
     font-weight: 700;
-    @include rtl-sass-padding-right(0.5em);
+    @include rtl-sass-padding-right(1.0em);
   }
 }

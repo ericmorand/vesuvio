@@ -23,7 +23,7 @@ deps.push(dataFilePath);
 data.components = [
   {
     title: 'URL',
-    url: 'http://mido.ch/'
+    url: '/breakpoint'
   }
 ];
 

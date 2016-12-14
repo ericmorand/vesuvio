@@ -10,6 +10,7 @@
   color: $theme--color--text-color--on-dark;
   @include rtl-sass-padding(0, 0.5em); //todo: use consistent padding
   position: relative;
+  font-family: Primary, sans-serif;
 
   &:before {
     display: inline-block;

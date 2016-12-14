@@ -24,7 +24,10 @@ module.exports = {
     open: false,
     notify: false,
     server: 'www',
-    logLevel: 'silent'
+    logLevel: 'silent',
+    ui: {
+      port: 8080
+    }
   },
   chokidar: {
     ignoreInitial: true,

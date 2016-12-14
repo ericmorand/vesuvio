@@ -1,6 +1,11 @@
 @import "../theme/lib/mixins";
 @import "body";
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .demo {
   padding: 16px;
   font-family: 'sans-serif';

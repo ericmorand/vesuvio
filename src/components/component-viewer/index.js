@@ -21,7 +21,8 @@ module.exports = Vue.component('component-viewer', {
   },
   data: function () {
     return {
-      currentDevice: defaultDevice
+      currentDevice: defaultDevice,
+      currentDirection: 'ltr'
     }
   },
   computed: {
@@ -40,6 +41,19 @@ module.exports = Vue.component('component-viewer', {
     },
     onDeviceButtonClick: function(device) {
       this.currentDevice = device;
+    },
+    onDirectionButtonClick: function(direction) {
+      this.currentDirection = direction;
+    }
+  },
+  watch: {
+    currentDirection: function(val) {
+      var preview = this.$el.getElementsByClassName('preview')[0];
+      var iframe = preview.getElementsByTagName('iframe')[0];
+
+      var html = iframe.contentWindow.document.documentElement;
+
+      html.setAttribute('dir', this.currentDirection);
     }
   }
 });

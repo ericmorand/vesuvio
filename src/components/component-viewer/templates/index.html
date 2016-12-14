@@ -5,6 +5,14 @@
                 <button class="icon open-in-own" v-on:click="onOpenInOwnWindowButtonClick"></button>
             </toolbar-button>
         </toolbar-group>
+        <toolbar-group class="directions" ref="directionsToolbarGroup" title="Direction">
+            <toolbar-button :active="currentDirection == 'ltr'">
+                <button title="Left-to-right" v-on:click="onDirectionButtonClick('ltr')">ltr</button>
+            </toolbar-button>
+            <toolbar-button :active="currentDirection == 'rtl'">
+                <button title="Right-to-left" v-on:click="onDirectionButtonClick('rtl')">rtl</button>
+            </toolbar-button>
+        </toolbar-group>
         <toolbar-group class="devices" ref="devicesToolbarGroup" :title="title">
             <toolbar-button v-for="device in devices" :active="device == currentDevice">
                 <button class="icon" v-bind:title="device.title"
@@ -13,6 +21,6 @@
         </toolbar-group>
     </toolbar>
     <div class="preview">
-        <iframe dir="rtl" v-bind:src="component.url" v-bind:style="{width: currentDevice.width}"></iframe>
+        <iframe v-bind:src="component.url" v-bind:style="{width: currentDevice.width}"></iframe>
     </div>
 </div>

@@ -68,7 +68,7 @@ var twigBinary = fs.readFileSync(twigBinaryPath).toString();
 var components = [];
 
 components.push(
-  new Component('lorem/ipsum', '/navigation/app-bar', [
+  new Component('lorem/ipsum', '/breakpoint', [
     new RenderResult('js', [
       {
         path: 'index.js',
@@ -116,7 +116,7 @@ components.push(
       }
     ])
   ]),
-  new Component('lorem/ipsum/dolor', 'http://mido.ch', [
+  new Component('lorem/ipsum/dolor', '/breakpoint', [
     new RenderResult('js', [
       {
         path: 'index.js',
@@ -133,7 +133,7 @@ components.push(
       }
     ])
   ]),
-  new Component('dolor/sit', 'http://details.ch/', [
+  new Component('dolor/sit', '/breakpoint', [
     new RenderResult('js', [
       {
         path: 'index.js',
@@ -150,7 +150,7 @@ components.push(
       }
     ])
   ]),
-  new Component('dolor/amet', 'http://zootemplate.com', [
+  new Component('dolor/amet', '/breakpoint', [
     new RenderResult('js', [
       {
         path: 'index.js',
