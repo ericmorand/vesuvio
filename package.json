@@ -1,7 +1,7 @@
 {
-  "name": "vesuvio-design-implementation",
+  "name": "vesuvio",
   "version": "0.1.0",
-  "description": "vesuvio-design-implementation",
+  "description": "Styleguide on steroids",
   "author": "",
   "dependencies": {},
   "devDependencies": {

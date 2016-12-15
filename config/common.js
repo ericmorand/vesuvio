@@ -27,13 +27,7 @@ module.exports = {
     sass: {
       module: require('stromboli-plugin-sass'),
       config: {
-        precision: 8,
-        functions: {
-          'codepoints-to-map($codepoints)': function(codepoints) {
-            console.log(codepoints.value);
-
-          }
-        }
+        precision: 8
       }
     }
   }
