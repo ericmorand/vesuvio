@@ -8,91 +8,103 @@ const log = require('log-util');
 
 const Promise = require('promise');
 const fsCopy = Promise.denodeify(fs.copy);
+const fsRemove = Promise.denodeify(fs.remove);
 const fsEmptyDir = Promise.denodeify(fs.emptyDir);
 const fsReadFile = Promise.denodeify(fs.readFile);
 const fsOutputFile = Promise.denodeify(fs.outputFile, 2);
 
 const Stromboli = require('stromboli');
 
-let componentsBuilderConfig = merge.recursive(true, require('./config/common'), require('./config/components'));
-let styleguideBuilderConfig = merge.recursive(true, require('./config/build'), require('./config/styleguide'));
+let componentsBuilderConfig = merge.recursive(true, require('./config/common'), require('./config/build'));
 
-componentsBuilderConfig.distPath = styleguideBuilderConfig.distPath;
+componentsBuilderConfig.componentRoot = 'src/components/page';
+componentsBuilderConfig.distPath = 'dist';
 
 let write = require('./lib/write');
 let tmpPath = 'tmp';
 
-let processStylesheet = function (config) {
-  let distPath = config.paths.dist;
-  let cssFilePath = path.join('tmp/styleguide', 'index.css');
+let processStylesheet = function (cssFilePath, config) {
+  let distPath = componentsBuilderConfig.distPath;
 
   return fsReadFile(cssFilePath).then(
     function (css) {
       return postcss(config.postcss.plugins).process(css.toString(), {from: cssFilePath}).then(
         function (result) {
-          return fsOutputFile(path.join(distPath, 'index.css'), result.css);
+          return fsOutputFile(path.join(path.dirname(cssFilePath), 'index.css'), result.css);
         }
       );
     }
   )
 };
 
-let processScript = function (config) {
-  let distPath = config.paths.dist;
-
-  return fsCopy(path.join('tmp/styleguide', 'index.js'), path.join(distPath, 'index.js'));
-};
-
-let processHtml = function (config) {
-  let distPath = config.distPath;
-
-  return fsCopy(path.join('tmp/styleguide', 'index.html'), path.join(distPath, 'index.html'));
-};
-
 let componentsBuilder = new Stromboli();
 
-fsEmptyDir(styleguideBuilderConfig.distPath).then(
+fsEmptyDir(componentsBuilderConfig.distPath).then(
   function () {
     componentsBuilder.start(componentsBuilderConfig).then(
       function (components) {
         // write
-        return write.writeComponents(components, styleguideBuilderConfig.distPath).then(
+        return write.writeComponents(components, componentsBuilderConfig.distPath).then(
           function () {
-            log.info('> COMPONENTS BUILD DONE');
 
-            let appBuilder = new Stromboli();
+            let promises = [];
+            var cssFiles = [];
+
+            // promises.push(processScript(componentsBuilderConfig));
+            // promises.push(processStylesheet(componentsBuilderConfig));
+            //promises.push(processHtml(componentsBuilderConfig));
 
             components.forEach(function (component) {
-              component.url = component.name;
+              var componentLastName = path.parse(component.name).base;
+              var from = path.join(componentsBuilderConfig.distPath, component.name, 'index.css');
+              var to = path.join(componentsBuilderConfig.distPath, componentLastName + '.css');
+
+              cssFiles.push(from);
+              // promises.push(fsCopy(from, to));
+              promises.push(processStylesheet(from, componentsBuilderConfig));
             });
 
-            styleguideBuilderConfig.plugins.twig.config.data = {
-              components: components,
-            };
+            components.forEach(function (component) {
+              var componentLastName = path.parse(component.name).base;
+              var from = path.join(componentsBuilderConfig.distPath, component.name, 'index.html');
+              var to = path.join(componentsBuilderConfig.distPath, componentLastName + '.html');
 
-            return appBuilder.start(styleguideBuilderConfig).then(
-              function (components) {
-                return write.writeComponents(components, tmpPath).then(
-                  function (files) {
-                    let promises = [];
+              promises.push(fsCopy(from, to));
+            });
 
-                    promises.push(processScript(styleguideBuilderConfig));
-                    promises.push(processStylesheet(styleguideBuilderConfig));
-                    promises.push(processHtml(styleguideBuilderConfig));
+            // clean
+            return Promise.all(promises).then(
+              function () {
+                return new Promise(function (fulfill, reject) {
+                  var concat = require('concat-files');
 
-                    // clean
-                    return Promise.all(promises).then(
-                      function () {
-                        log.info('> APP BUILD DONE');
-                      },
-                      function (err) {
-                        console.log(err);
+                  concat(cssFiles, path.join(componentsBuilderConfig.distPath, 'index.css'), function (err) {
+                    if (err) {
+                      console.log(err);
+
+                      reject(err);
+                    }
+
+                    fulfill();
+                  })
+                }).then(
+                  function () {
+                    return processStylesheet(path.join(componentsBuilderConfig.distPath, 'index.css'), componentsBuilderConfig).then(
+                      function() {
+                        return fsRemove(path.join(componentsBuilderConfig.distPath, 'page')).then(
+                          function() {
+                            log.info('> APP BUILD DONE');
+                          }
+                        )
                       }
                     )
+                  },
+                  function (err) {
+                    console.log(err);
                   }
-                );
+                )
               }
-            )
+            );
           }
         );
       },

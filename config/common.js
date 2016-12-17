@@ -5,6 +5,7 @@ module.exports = {
   plugins: {
     javascript: {
       module: require('stromboli-plugin-javascript'),
+      entry: 'index.js',
       config: {
         transform: [
           ['stringify', {
@@ -22,10 +23,12 @@ module.exports = {
       }
     },
     twig: {
-      module: require('stromboli-plugin-twig')
+      module: require('stromboli-plugin-twig'),
+      entry: 'index.twig'
     },
     sass: {
       module: require('stromboli-plugin-sass'),
+      entry: 'index.scss',
       config: {
         precision: 8
       }
