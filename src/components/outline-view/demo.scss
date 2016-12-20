@@ -1,6 +1,6 @@
 @import "index";
-@import "../../demo/index";
-@import "../../body/index";
+@import "../demo/index";
+@import "../body/index";
 
 .demo-outline-view {
   @include body;

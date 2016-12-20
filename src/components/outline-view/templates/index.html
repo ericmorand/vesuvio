@@ -1,5 +1,5 @@
 <ul class="outline-view">
-    <li v-for="node, index in tree.all()" class="outline-view-item" v-show="!node.parent || isNodeVisible(node)"
+    <li v-for="node, index in tree.all()" class="outline-view-item" v-if="!node.parent || isNodeVisible(node)"
         :class="getNodeClasses(node)" v-on:click.stop="onItemClick(node)">
         <div class="indentation" v-for="index in (node.model.depth + (isNodeLeaf(node) ? 1 : 0))"></div>
         <div class="expander" v-if="!isNodeLeaf(node)" v-on:click.stop="onExpanderClick(node)"></div>

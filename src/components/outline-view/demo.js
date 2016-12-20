@@ -1,5 +1,5 @@
 require('.');
-require('../../demo/index');
+require('../demo/index');
 
 var Vue = require('vue');
 

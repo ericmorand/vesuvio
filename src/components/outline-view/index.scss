@@ -1,10 +1,10 @@
-@import "../../theme/breakpoint/index";
-@import "../../theme/color/index";
-@import "../../theme/icon/index";
-@import "../../icon/index";
-@import "../../theme/rtl/index";
-@import "../../theme/lib/mixins";
-@import "../../theme/font/index";
+@import "../theme/breakpoint/index";
+@import "../theme/color/index";
+@import "../theme/icon/index";
+@import "../icon/index";
+@import "../theme/rtl/index";
+@import "../theme/lib/mixins";
+@import "../theme/font/index";
 
 .outline-view {
   background-color: $theme--color--background-color--light;
