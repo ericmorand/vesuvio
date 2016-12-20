@@ -1,0 +1,87 @@
+@import "../../theme/breakpoint/index";
+@import "../../theme/color/index";
+@import "../../theme/icon/index";
+@import "../../icon/index";
+@import "../../theme/rtl/index";
+@import "../../theme/lib/mixins";
+@import "../../theme/font/index";
+
+.outline-view {
+  background-color: $theme--color--background-color--light;
+  color: $theme--color--text-color--on-dark;
+  display: inline-block;
+  min-width: 100%;
+  @include rtl-sass-padding(0);
+  @include rtl-sass-margin(0);
+
+  font-size: 1.25em;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .items {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .outline-view-item {
+    display: block;
+    list-style: none;
+    white-space: nowrap;
+    cursor: default;
+    height: 2.0em;
+    font-family: NoSpace, sans-serif;
+
+    &.selected {
+      background-color: $theme--color--highlight;
+    }
+
+    .indentation, .expander, .icon, .title {
+      font-family: Primary, sans-serif;
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      line-height: 2.0em;
+      @include rtl-sass-padding-left(0.25em);
+    }
+
+    .indentation {
+      width: 1.0em;
+
+      &.leaf-indentation {
+        display: none;
+      }
+    }
+
+    .expander {
+      width: 1.0em;
+      @include icon(play-arrow);
+
+      &:before {
+        @include rtl-sass-declaration(transform, rotate(0deg), rotate(180deg));
+        display: block;
+      }
+    }
+
+    .icon {
+      width: 1.0em;
+
+      @include icon(folder);
+    }
+
+    .title {
+      @include rtl-sass-padding-right(1.0em);
+    }
+
+    &.expanded {
+      .expander {
+        &:before {
+          @include rtl-sass-declaration(transform, rotate(90deg), rotate(90deg));
+        }
+      }
+    }
+  }
+}

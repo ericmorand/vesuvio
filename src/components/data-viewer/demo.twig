@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Resource viewer demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Resource viewer" v-bind:directions="{{ directions|json_encode|escape }}">
+        {% for resource in resources %}
+            <div slot="content" class="demo-content">
+                <h3>{{ resource.title }}</h3>
+                <div class="demo-data-viewer">
+                    <demo-data-viewer inline-template>
+                        <data-viewer v-bind:resource="{{ resource|json_encode|escape }}"
+                                         v-bind:devices="{{ devices|json_encode|escape }}"></data-viewer>
+                    </demo-data-viewer>
+                </div>
+            </div>
+        {% endfor %}
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

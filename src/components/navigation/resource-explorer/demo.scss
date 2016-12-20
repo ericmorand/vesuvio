@@ -1,0 +1,11 @@
+@import "index";
+@import "../../demo/index";
+@import "../../body/index";
+
+.demo-navigation-resource-explorer {
+  @include body;
+
+  > div {
+    height: 50vh;
+  }
+}

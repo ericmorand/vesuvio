@@ -1,0 +1,20 @@
+<div class="navigation-resource-explorer">
+    <toolbar>
+        <toolbar-group>
+            <toolbar-button class="search">
+                <search-input :delegate="searchInputDelegate">
+                    <input class="search" type="search">
+                </search-input>
+            </toolbar-button>
+            <toolbar-button class="binaries" :active="filter.showBinaries">
+                <button v-on:click="onBinariesButtonClick"></button>
+            </toolbar-button>
+            <toolbar-button class="dependencies" :active="filter.showDependencies">
+                <button v-on:click="onDependenciesButtonClick"></button>
+            </toolbar-button>
+        </toolbar-group>
+    </toolbar>
+    <div class="outline-view-wrapper">
+        <outline-view class="root" v-if="root" :delegate="this.outlineViewDelegate" :root="root"></outline-view>
+    </div>
+</div>

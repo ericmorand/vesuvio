@@ -3,9 +3,6 @@ const lodash = require('lodash');
 
 module.exports = Vue.component('search-input', {
   template: require('./templates/index.html'),
-  props: {
-    delegate: null
-  },
   data: function() {
     return {
       input: null,
@@ -35,10 +32,6 @@ module.exports = Vue.component('search-input', {
   },
   watch: {
     value: function(val) {
-      if (this.delegate) {
-        this.delegate.valueDidChange(val);
-      }
-
       this.$parent.$emit('search-input:value-did-change', val);
     }
   }

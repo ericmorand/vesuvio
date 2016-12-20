@@ -1,9 +1,0 @@
-@import "index";
-@import "../demo/index";
-@import "../body/index";
-
-.demo-component-viewer {
-  @include body;
-
-  height: 80vh;
-}

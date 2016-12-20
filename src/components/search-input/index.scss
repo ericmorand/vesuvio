@@ -1,8 +1,33 @@
 @import "../theme/color/index";
+@import "../theme/icon/index";
+@import "../theme/rtl/index";
+@import "../theme/lib/mixins";
 
-input.search {
-  height: $theme--toolbar--height;
+@import "../font/lib/mixins";
+@import "../icon/lib/mixins";
+
+.search-input {
   position: relative;
-  background-color: $theme--color--background-color--dark;
-  border-bottom: solid 1px rgba(40, 40, 40, 1.0);
+  @include icon(search);
+
+  &:before {
+    position: absolute;
+    font-size: 1.5em;
+    @include rtl-sass-left(0.25em);
+    top: 0;
+    bottom: 0;
+    line-height: 1.5em;
+  }
+
+  input {
+    @include primary-font(normal, 700);
+    background-color: $theme--color--background-color--lighter;
+    color: $theme--color--text-color--on-light;
+    @include rtl-sass-border-style(solid);
+    @include rtl-sass-border-width(1px);
+    @include rtl-sass-border-color(rgba(40, 40, 40, 1.0));
+    @include rtl-sass-padding(0.5em);
+    @include rtl-sass-padding-left(2.0em);
+    font-size: 1.0em;
+  }
 }

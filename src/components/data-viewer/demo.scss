@@ -2,8 +2,8 @@
 @import "../demo/index";
 @import "../body/index";
 
-.demo-search-input {
+.demo-data-viewer {
   @include body;
 
-  padding: 1.0em;
+  height: 50vh;
 }

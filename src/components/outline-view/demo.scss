@@ -1,9 +1,0 @@
-@import "index";
-@import "../demo/index";
-@import "../body/index";
-
-.demo-outline-view {
-  @include body;
-
-  height: 50vh;
-}

@@ -1,6 +1,8 @@
 <div class="navigation-app-bar">
     <button class="burger" title="Show menu" v-on:click="onMenuButtonClick"></button>
+    <button class="previous" title="Previous item" v-on:click="onPreviousButtonClick" :disabled="!isPreviousButtonEnabled"></button>
     <div class="title-wrapper">
         <div class="title">{{title}}</div>
     </div>
+    <button class="next" title="Next item" v-on:click="onNextButtonClick" :disabled="!isNextButtonEnabled"></button>
 </div>

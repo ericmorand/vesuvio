@@ -1,0 +1,18 @@
+@import "../theme/color/index";
+@import "../theme/icon/index";
+@import "../theme/rtl/index";
+@import "../theme/lib/mixins";
+
+@import "../font/lib/mixins";
+@import "../icon/lib/mixins";
+
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+
+  label & {
+    position: relative;
+    bottom: -0.1em;
+    @include rtl-sass-margin-right(0.35em);
+  }
+}

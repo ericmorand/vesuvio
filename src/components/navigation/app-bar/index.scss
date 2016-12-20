@@ -4,6 +4,8 @@
 @import "../../theme/rtl/index";
 @import "../../theme/app-bar/index";
 
+$button-width: 3.0em; // todo: use theme
+
 .navigation-app-bar {
   height: $theme--app-bar--height;
   background-color: $theme--color--background-color--light;
@@ -19,7 +21,7 @@
     content: "";
   }
 
-  .burger {
+  button {
     height: 2.0em;
     width: 2.0em;
     display: inline-block;
@@ -29,14 +31,28 @@
     color: inherit;
     font-size: inherit;
     padding: 0;
-    @include icon(menu);
 
     &:before {
       font-size: 2.0em;
+    }
 
+    &:disabled {
+      color: $theme--color--background-color--lighter;
+    }
+
+    &.burger {
+      @include icon(menu);
       @include breakpoint(min-width $theme--breakpoint--lg) {
         display: none;
       }
+    }
+
+    &.previous {
+      @include icon(navigate-before);
+    }
+
+    &.next {
+      @include icon(navigate-next);
     }
   }
 
@@ -46,7 +62,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    @include rtl-sass-margin(0, 3.0em); //todo: compute this
+    @include rtl-sass-margin(0, $button-width * 3);
 
     &:before {
       display: inline-block;
@@ -64,4 +80,5 @@
     width: 100%;
     text-align: center;
   }
+
 }

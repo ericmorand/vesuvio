@@ -1,7 +1,7 @@
 require('../navigation/app-bar');
-require('../navigation/component-explorer');
-require('../resource-viewer');
-require('../component-viewer');
+require('../navigation/resource-explorer');
+require('../data-viewer');
+require('../url-viewer');
 
 const Vue = require('vue');
 
@@ -19,16 +19,18 @@ module.exports = Vue.component('workbench', {
     },
     directions: {
       type: Array,
-      default: [
-        {
-          name: 'ltr',
-          title: 'Left-to-rigth'
-        },
-        {
-          name: 'rtl',
-          title: 'Right-to-left'
-        }
-      ]
+      default: function () {
+        return [
+          {
+            name: 'ltr',
+            title: 'Left-to-rigth'
+          },
+          {
+            name: 'rtl',
+            title: 'Right-to-left'
+          }
+        ]
+      }
     }
   },
   data: function () {
@@ -45,16 +47,34 @@ module.exports = Vue.component('workbench', {
       this.componentExplorerExpanded = !this.componentExplorerExpanded;
     });
 
-    this.$on('component-explorer:selection-did-change', function (item) {
-      this.resource = item;
+    this.$on('resource-explorer:resource-did-change', function (item) {
+      if (item) {
+        this.component = item.component;
+        this.resource = item;
+      }
+      else {
+        this.component = null;
+        this.resource = null;
+      }
     });
 
-    this.$on('component-viewer:device-did-change', function (device) {
+    this.$on('url-viewer:device-did-change', function (device) {
       this.device = device;
     });
 
-    this.$on('component-viewer:direction-did-change', function (direction) {
+    this.$on('url-viewer:direction-did-change', function (direction) {
       this.direction = direction;
     });
+  },
+  methods: {
+    onOverlayClick: function(e) {
+      this.componentExplorerExpanded = false;
+    },
+    appBarIsPreviousButtonEnabled: function(appBar) {
+      return true;
+    },
+    appBarIsNextButtonEnabled: function(appBar) {
+      return false;
+    }
   }
 });

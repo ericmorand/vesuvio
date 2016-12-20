@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Resource explorer demo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+    <demo title="Resource explorer" v-bind:directions="{{ directions|json_encode|escape }}">
+        <div slot="content" class="demo-content">
+            <div class="demo-navigation-resource-explorer">
+                <demo-navigation-resource-explorer inline-template>
+                    <div>
+                        <button v-on:click="onAddBinaryButtonClick">Add binary</button>
+                        <resource-explorer ref="resourceExplorer"
+                                           v-bind:components="{{ components|json_encode|escape }}"></resource-explorer>
+                    </div>
+                </demo-navigation-resource-explorer>
+            </div>
+        </div>
+    </demo>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

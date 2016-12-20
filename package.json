@@ -12,6 +12,7 @@
     "concat-files": "^0.1.1",
     "cssnano": "^3.8.1",
     "highlight.js": "^9.8.0",
+    "lodash": "^4.17.2",
     "material-design-icons": "^3.0.1",
     "merge": "^1.2.0",
     "minifyify": "^7.3.4",
@@ -25,6 +26,7 @@
     "stromboli-plugin-javascript": "^0.4.0",
     "stromboli-plugin-sass": "^0.7.1",
     "stromboli-plugin-twig": "^0.6.2",
+    "tree-model": "^1.0.6",
     "vue": "^2.0.8"
   },
   "scripts": {

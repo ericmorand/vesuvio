@@ -1,9 +1,13 @@
-<div class="workbench" v-bind:class="{'component-explorer-expanded': componentExplorerExpanded}">
-    <app-bar v-bind:title="'test'"></app-bar>
+<div class="workbench" v-bind:class="{'resource-explorer-expanded': componentExplorerExpanded}">
+    <app-bar :title="'test'" :delegate="this"></app-bar>
     <div class="wrapper">
-        <component-explorer v-bind:components="components"></component-explorer>
-        <component-viewer v-if="resource && resource.url" :component="resource" :devices="devices" :device="device"
-                          :directions="directions" :direction="direction"></component-viewer>
-        <resource-viewer v-if="resource && resource.data" :resource="resource"></resource-viewer>
+        <resource-explorer v-bind:components="components"></resource-explorer>
+        <url-viewer v-if="resource && resource.type == 'demo'" :url="resource.data" :devices="devices" :device="device"
+                    :directions="directions" :direction="direction"></url-viewer>
+        <data-viewer v-if="resource && resource.type != 'demo'" :data="resource.data"></data-viewer>
+        <div v-if="!resource" class="empty"></div>
+        <transition name="fade">
+            <div class="overlay" v-if="componentExplorerExpanded" v-on:click="onOverlayClick"></div>
+        </transition>
     </div>
 </div>
