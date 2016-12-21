@@ -3,7 +3,7 @@ var path = require('path');
 var TreeModel = require('tree-model');
 
 require('../../toolbar/toolbar');
-require('../../outline-view/outline-view');
+require('../../outline-view');
 require('../../search-input');
 
 var OutlineViewItemModel = function (component, name) {
@@ -28,7 +28,6 @@ module.exports = Vue.component('resource-explorer', {
   data: function () {
     return {
       root: null,
-      tree: null,
       filter: {
         text: null,
         showBinaries: false,
@@ -41,8 +40,7 @@ module.exports = Vue.component('resource-explorer', {
           this.value = value;
         }
       },
-      resource: null,
-      expandedItems: []
+      resource: null
     }
   },
   created: function () {
@@ -50,10 +48,15 @@ module.exports = Vue.component('resource-explorer', {
       this.filter.text = value;
     });
 
-    this.$on('outline-view:item-click', function (item) {
-      if (this.shouldSelectItem(item)) {
-        this.resource = item;
+    this.$on('outline-view:selection-did-change', function (outlineView) {
+      var resource = null;
+      var selectedNode = outlineView.selectedNodes[0];
+
+      if (selectedNode) {
+        resource = selectedNode.model;
       }
+
+      this.resource = resource;
     });
 
     this.$on('outline-view:expander-click', function (item) {
@@ -80,20 +83,35 @@ module.exports = Vue.component('resource-explorer', {
     };
 
     this.outlineViewDelegate = {
-      outlineViewItemClass: function (item) {
-        if (item.type == 'demo') {
-          return 'component';
-        }
+      outlineViewGetNodeClasses: function (node) {
+        if (node) {
+          var item = node.model;
 
-        if (item.children.length > 0) {
-          if (item.type) {
-            return item.type + '-root';
+          if (item.type == 'demo') {
+            return 'component';
           }
 
-          return 'folder';
+          if (item.children.length > 0) {
+            if (item.type) {
+              return item.type + '-root';
+            }
+
+            return 'folder';
+          }
+
+          return item.type;
+        }
+      },
+      outlineViewShouldSelectNode: function(node) {
+        if (node) {
+          var item = node.model;
+
+          return (item.type == 'demo') ||
+            (item.type == 'binary' && item.children.length < 1) ||
+            (item.type == 'dependency' && item.children.length < 1);
         }
 
-        return item.type;
+        return true;
       }
     };
   },
@@ -278,26 +296,6 @@ module.exports = Vue.component('resource-explorer', {
   },
   watch: {
     resource: function (val, oldVal) {
-      var resourceNode = this.tree.first(function (node) {
-        return (node.model == val);
-      });
-
-      // expand path to the resource node
-      if (resourceNode) {
-        var nodes = resourceNode.getPath();
-
-        nodes.forEach(function (node) {
-          if (node != resourceNode) {
-            node.model.expanded = true;
-          }
-        });
-      }
-
-      // deselect all other items
-      this.tree.walk(function (node) {
-        node.model.selected = (node.model == val);
-      });
-
       this.$parent.$emit('resource-explorer:resource-did-change', val);
     },
     'filter.text': function (val) {

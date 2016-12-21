@@ -15,6 +15,6 @@
         </toolbar-group>
     </toolbar>
     <div class="outline-view-wrapper">
-        <outline-view class="root" v-if="root" :delegate="this.outlineViewDelegate" :root="root"></outline-view>
+        <outline-view ref="outlineView" v-if="root" :delegate="this.outlineViewDelegate" :root="root" :allowsMultipleSelection="false"></outline-view>
     </div>
 </div>

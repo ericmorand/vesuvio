@@ -11,10 +11,9 @@ $theme--resource-explorer--toolbar-horizontal-padding: 0.35em;
 $button-width: 3.0em;
 
 @mixin outlineViewItemIcon($icon) {
-  > .item {
-    .icon {
-      @include icon($icon);
-    }
+  .icon {
+    display: inline-block;
+    @include icon($icon);
   }
 }
 

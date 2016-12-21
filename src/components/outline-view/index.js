@@ -5,17 +5,22 @@ module.exports = Vue.component('outline-view', {
   template: require('./templates/index.html'),
   props: {
     root: null,
-    // delegate: null,
+    delegate: null,
     level: {
       type: Number,
       default: 0
+    },
+    allowsMultipleSelection: {
+      type: Boolean,
+      default: false
     }
   },
   data: function () {
     return {
       tree: null,
       expandedNodes: [],
-      selectedNodes: []
+      selectedNodes: [],
+      expandedItems: []
     }
   },
   computed: {},
@@ -31,8 +36,6 @@ module.exports = Vue.component('outline-view', {
     var tree = new TreeModel();
 
     this.tree = tree.parse(this.root);
-
-    console.log(this.tree.all());
 
     var that = this;
 
@@ -74,13 +77,31 @@ module.exports = Vue.component('outline-view', {
       return (node.children.length < 1);
     },
     isNodeExpanded: function (node) {
+      // root node is always expanded
+      if (node.isRoot()) {
+        return true;
+      }
+
       return this.expandedNodes.indexOf(node) > -1;
+    },
+    isItemExpanded: function (item) {
+      // root node is always expanded
+      // if (node.isRoot()) {
+      //   return true;
+      // }
+
+      return this.expandedItems.indexOf(item) > -1;
     },
     isNodeSelected: function (node) {
       return this.selectedNodes.indexOf(node) > -1;
     },
     isNodeVisible: function (node) {
       var that = this;
+
+      // root node is never visible
+      if (node.isRoot()) {
+        return false;
+      }
 
       var walk = function (node) {
         if (node.parent) {
@@ -128,7 +149,17 @@ module.exports = Vue.component('outline-view', {
       });
     },
     selectNode: function (node) {
-      if (this.selectedNodes.indexOf(node) < 0) {
+      var shouldSelect = true;
+
+      if (this.delegate) {
+        shouldSelect = this.delegate.outlineViewShouldSelectNode(node);
+      }
+
+      if (shouldSelect && (this.selectedNodes.indexOf(node) < 0)) {
+        if (!this.allowsMultipleSelection) {
+          this.selectedNodes.splice(0, this.selectedNodes.length);
+        }
+
         this.selectedNodes.push(node);
       }
     },
@@ -146,6 +177,26 @@ module.exports = Vue.component('outline-view', {
         });
       }
     },
+    reloadItem: function(item) {
+      var tree = new TreeModel();
+
+      this.tree = tree.parse(item);
+
+      var that = this;
+
+      this.walk = function (item, depth) {
+        item.depth = depth;
+        item.expanded = false;
+
+        if (item.children.length > 0) {
+          item.children.forEach(function (child) {
+            that.walk(child, depth + 1);
+          });
+        }
+      };
+
+      this.walk(this.root, 0);
+    },
     getNodeClasses: function (node) {
       var classes = [];
 
@@ -161,12 +212,24 @@ module.exports = Vue.component('outline-view', {
         classes.push('selected');
       }
 
+      if (this.delegate) {
+        classes = classes.concat(this.delegate.outlineViewGetNodeClasses(node));
+      }
+
       return classes;
+    },
+    getNodeForItem: function(item) {
+      return this.tree.first(function(node) {
+        return (node.model == item);
+      });
     }
   },
   watch: {
     root: function (val) {
-      this.walk(val, 0);
+      this.reloadItem(val);
+    },
+    selectedNodes: function(val) {
+      this.$parent.$emit('outline-view:selection-did-change', this);
     }
   }
 });

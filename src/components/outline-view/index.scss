@@ -68,8 +68,7 @@
 
     .icon {
       width: 1.0em;
-
-      @include icon(folder);
+      display: none;
     }
 
     .title {
