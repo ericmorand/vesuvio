@@ -6,7 +6,7 @@ const merge = require('merge');
 const ComponentsBuilder = require('./lib/components-builder');
 const StyleguideBuilder = require('./lib/styleguide-builder');
 
-let componentsBuilderConfig = merge.recursive({}, require('./config/common'), require('./config/components'));
+let componentsBuilderConfig = require('./config/components');
 
 class Builder extends ComponentsBuilder {
   start(config) {
@@ -33,18 +33,21 @@ class Builder extends ComponentsBuilder {
         );
 
         components.forEach(function(component) {
-          component.url = '//localhost:' + browserSync.instance.getOptions().get('port') + '/' + component.name
+          component.url = '//localhost:' + browserSync.instance.getOptions().get('port') + '/' + component.name + '/demo/index'
         });
 
         // styleguide build
         let styleguideBuilder = new StyleguideBuilder();
         let styleguideBuilderConfig = require('./config/styleguide');
 
-        styleguideBuilderConfig.plugins.twig.config.data = {
-          components: components,
+        styleguideBuilderConfig.plugins.index.config.data = {
+          components: components
         };
 
         return styleguideBuilder.start(styleguideBuilderConfig);
+      },
+      function(err) {
+        console.log(err);
       }
     );
   };

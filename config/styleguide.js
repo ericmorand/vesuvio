@@ -1,3 +1,4 @@
+const merge = require('merge');
 const Promise = require('promise');
 const TwigPlugin = require('stromboli-plugin-twig');
 
@@ -16,7 +17,7 @@ module.exports = {
   componentRoot: 'src/styleguide',
   componentManifest: 'component.json',
   plugins: {
-    javascript: {
+    js: {
       module: require('stromboli-plugin-javascript'),
       entry: 'index.js',
       config: {
@@ -34,12 +35,12 @@ module.exports = {
         ]
       }
     },
-    twig: {
+    index: {
       module: MyTwigPlugin,
       entry: 'index.twig',
       config: {}
     },
-    sass: {
+    css: {
       module: require('stromboli-plugin-sass'),
       entry: 'index.scss',
       config: {

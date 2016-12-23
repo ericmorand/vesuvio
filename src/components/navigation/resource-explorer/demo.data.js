@@ -18,7 +18,8 @@ var components = require(componentsDataFilePath);
 
 deps.push(componentsDataFilePath);
 
-data.components = components.data;
+data.resources = components.data;
+
 
 module.exports = {
   deps: deps,

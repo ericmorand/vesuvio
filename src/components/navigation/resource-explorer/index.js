@@ -20,7 +20,7 @@ var OutlineViewItemModel = function (component, name) {
 module.exports = Vue.component('resource-explorer', {
   template: require('./templates/index.html'),
   props: {
-    components: {
+    resources: {
       type: Array,
       default: []
     }
@@ -69,7 +69,7 @@ module.exports = Vue.component('resource-explorer', {
         });
 
         if (node) {
-          node.walk(function(childNode) {
+          node.walk(function (childNode) {
             childNode.model.expanded = false;
           });
         }
@@ -102,7 +102,7 @@ module.exports = Vue.component('resource-explorer', {
           return item.type;
         }
       },
-      outlineViewShouldSelectNode: function(node) {
+      outlineViewShouldSelectNode: function (node) {
         if (node) {
           var item = node.model;
 
@@ -119,7 +119,6 @@ module.exports = Vue.component('resource-explorer', {
     var that = this;
 
     this.refresh = function () {
-      var tree = new TreeModel();
       var root = {
         children: []
       };
@@ -133,7 +132,7 @@ module.exports = Vue.component('resource-explorer', {
       };
 
       var getItemWithId = function (root, id) {
-        return root.children.find(function(child) {
+        return root.children.find(function (child) {
           if (child.id == id) {
             return child;
           }
@@ -210,8 +209,8 @@ module.exports = Vue.component('resource-explorer', {
 
           var model = getItemWithId(_root, itemId);
 
-
           if (!model) {
+
             model = new OutlineViewItemModel(component, namePart);
             model.data = component.url;
             model.id = itemId;
@@ -256,26 +255,13 @@ module.exports = Vue.component('resource-explorer', {
         });
       };
 
-      this.components.forEach(function (component) {
+      this.resources.forEach(function (component) {
         if (component.name.indexOf(filter.text) !== -1) {
           processComponent(component, root);
         }
       });
 
       this.root = root;
-      this.tree = tree.parse(root);
-
-      // select first valid item, if any
-      var node = this.tree.first(function (node) {
-        return (that.shouldSelectItem(node.model));
-      });
-
-      if (node) {
-        this.resource = node.model;
-      }
-      else {
-        this.resource = null;
-      }
     };
 
     this.refresh();
@@ -292,6 +278,13 @@ module.exports = Vue.component('resource-explorer', {
     },
     addBinary: function (binary) {
 
+    },
+    onPluginDidRenderComponent: function(plugin, component) {
+      // find component
+
+      // empty component
+
+      // create component
     }
   },
   watch: {

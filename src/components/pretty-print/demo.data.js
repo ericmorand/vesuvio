@@ -17,13 +17,13 @@ var Code = function(title, lang, dataFilePath) {
 
   this.title = title;
   this.lang = lang;
-  this.content = fs.readFileSync(absPath);
+  this.content = fs.readFileSync(absPath).toString();
 };
 
 data.codes = [
   new Code('HTML', 'html', './data/data.html'),
-  new Code('JavaScript', 'js', './data/data.js'),
-  new Code('SASS', 'css', './data/data.scss')
+  new Code('JavaScript', 'javascript', './data/data.js'),
+  new Code('SASS', 'sass', './data/data.scss')
 ];
 
 module.exports = {

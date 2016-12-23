@@ -9,7 +9,7 @@ var readDataFile = function(file) {
 
   deps.push(dataFilePath);
 
-  return fs.readFileSync(filePath).toString()
+  return fs.readFileSync(filePath).toString();
 };
 
 var dataFilePath = path.resolve(path.join(__dirname, '../demo/demo.data.js'));
@@ -22,22 +22,18 @@ deps.push(dataFilePath);
 
 data.resources = [
   {
-    title: 'URL',
-    url: '//placehold.it/1024x768'
-  },
-  {
     title: 'SASS',
     lang: 'sass',
     data: readDataFile('data/resource-data.scss')
   },
   {
     title: 'CSS',
-    lang: 'sass',
+    lang: 'css',
     data: readDataFile('data/resource-data.css')
   },
   {
     title: 'JavaScript',
-    lang: 'js',
+    lang: 'javascript',
     data: readDataFile('data/resource-data.js')
   },
   {

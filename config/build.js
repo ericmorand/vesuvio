@@ -1,24 +1,25 @@
+const merge = require('merge');
 const path = require('path');
 
-let tmpPath = 'tmp;'
+let tmpPath = 'tmp';
 let distPath = 'dist';
 
 module.exports = {
   plugins: {
-    javascript: {
-      config: {
+    js: {
+      config: merge.recursive(require('./plugin/javascript'), {
         plugin: [
           function (bundle, opts) {
             return require('minifyify')(bundle, {map: false});
           }
         ]
-      }
+      })
     },
-    sass: {
-      config: {
+    css: {
+      config: merge.recursive(require('./plugin/sass'), {
         sourceMap: false,
         sourceComments: false
-      }
+      })
     }
   },
   distPath: distPath,

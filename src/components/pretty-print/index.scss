@@ -1,0 +1,94 @@
+@import "../theme/color/index";
+@import "../theme/pretty-print/index";
+
+.pretty-print {
+  @import "base";
+
+  direction: ltr;
+
+  .CodeMirror {
+    font-family: $theme--pretty-print--font-family;
+    background: $theme--pretty-print--background-color;
+    color: $theme--pretty-print--text-color;
+    height: 100%;
+  }
+
+  div.CodeMirror-selected {
+    background: $theme--pretty-print--selected--background-color;
+  }
+
+  .CodeMirror-gutters {
+    background: $theme--pretty-print--gutters--background-color;
+    border-right: 0;
+  }
+
+  .CodeMirror-linenumber {
+    color: $theme--pretty-print--line-number--text-color;
+  }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid $theme--pretty-print--cursor--border-color;
+  }
+
+  span.cm-comment {
+    color: $theme--pretty-print--comment--text-color;
+  }
+
+  span.cm-atom {
+    color: $theme--pretty-print--atom--text-color;
+  }
+
+  span.cm-number {
+    color: $theme--pretty-print--number--text-color;
+  }
+
+  span.cm-property, span.cm-attribute {
+    color: $theme--pretty-print--property--text-color;
+  }
+
+  span.cm-keyword {
+    color: $theme--pretty-print--keyword--text-color;
+  }
+
+  span.cm-string {
+    color: $theme--pretty-print--string--text-color;
+  }
+
+  span.cm-variable {
+    color: $theme--pretty-print--variable--text-color;
+  }
+
+  span.cm-variable-2 {
+    color: $theme--pretty-print--variable-2--text-color;
+  }
+
+  span.cm-def {
+    color: $theme--pretty-print--def--text-color;
+  }
+
+  span.cm-error {
+    background: $theme--pretty-print--error--background-color;
+    color: $theme--pretty-print--error--text-color;
+  }
+
+  span.cm-bracket {
+    color: $theme--pretty-print--bracket--text-color;
+  }
+
+  span.cm-tag {
+    color: $theme--pretty-print--tag--text-color;
+  }
+
+  span.cm-link {
+    color: $theme--pretty-print--link--text-color;
+  }
+
+  .CodeMirror-matchingbracket {
+    text-decoration: $theme--pretty-print--matching-bracket--text-decoration;
+    color: $theme--pretty-print--matching-bracket--text-color;
+  }
+
+  .CodeMirror-activeline-background {
+    background: $theme--pretty-print--activeline-background--background-color;
+  }
+}
